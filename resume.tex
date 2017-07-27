@@ -1,0 +1,84 @@
+% This CV is powered by awesome-CV template downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Thanks the author who made this beautiful template:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt, a4paper]{awesome}
+
+%%% Override a directory location for fonts(default: 'fonts/')
+\fontdir[fonts/]
+
+%%% Configure a directory location for sections
+\newcommand*{\sectiondir}{contents/}
+
+%%% Override color
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+%% Color for highlight
+% Define your custom color if you don't like awesome colors
+\colorlet{awesome}{awesome-red}
+%\definecolor{awesome}{HTML}{CA63A8}
+%% Colors for text
+%\definecolor{darktext}{HTML}{414141}
+%\definecolor{text}{HTML}{414141}
+%\definecolor{graytext}{HTML}{414141}
+%\definecolor{lighttext}{HTML}{414141}
+
+%%% Override a separator for social informations in header(default: ' | ')
+%\headersocialsep[\quad\textbar\quad]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     3rd party packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Needed to divide into several files
+\usepackage{import}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Personal Data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Essentials
+\name{Murphy}{Meng}
+%\address{Line of address. Would enable when \homepage below reflects real home page.}
+\mobile{(+44) 780 1566 119} 
+\email{murphy.meng.0xff@gmail.com}
+\homepage{Southampton, United Kingdom} % Use the lovely house icon for address for now since my home page is not ready yet.
+%\github{posquit0} Will add it back when I have portfolio on github!
+\linkedin{murphymeng}
+%%% Optionals
+%\position{Software Engineer{\enskip\cdotp\enskip}Security Expert}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Make a footer for CV with three arguments(<left>, <center>, <right>)
+\makecvfooter
+  {2017}
+  {Murphy Meng~~~·~~~Résumé}
+  {\thepage}
+
+\begin{document}
+%%% Make a header for CV with personal data
+\makecvheader
+
+%%% Import contents
+\import{\sectiondir}{summary.tex}
+\import{\sectiondir}{skill.tex}
+\import{\sectiondir}{experience.tex}
+\import{\sectiondir}{innovation.tex}
+\import{\sectiondir}{presentation.tex}
+\import{\sectiondir}{honors.tex}
+\import{\sectiondir}{education.tex}
+\end{document}

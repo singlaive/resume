@@ -1,0 +1,47 @@
+\cvsection{Innovations}
+\descriptionstyle{Cisco encourages professional initiative innovation challenges which are supported by the company, but take place in personal time.}
+\begin{cventries}
+  \cventryX
+    {Voice control over set-top box}
+    {2017}
+    {There was no voice control on BskyB's Q boxes. Its fancy bluetooth remote supports voice search though.}
+    {
+      \begin{cvitems}
+        \item {Built up a two men self managed team collaborated with Kanban board aiming to integrate voice control feature into existing set-top box platform powered by CMUSphinx library.}
+        \item {Set up a CI system with customized docker containers and built appropriate pipelines to build, unit test, system test before deploying to two Raspberry PIs automatically on a dedicated CI server.}
+        \item{Techniques: C++, Bash, CMake, Concourse CI, Debian, CPPUnit, GIT, Docker, Kanban, TDD}
+      \end{cvitems}
+    }
+  \cventryX
+    {Continuous deployment platform}
+    {2016}
+    {Existing CI pipelines in CISCO lacked the step deploying binaries to engineers' set-top boxes for feature acceptance testing or regression testing. Full stack builds of particular version were flashed manually, which is tedious and easily mistaken.}
+    {
+      \begin{cvitems}
+        \item {Built a Python backend which polls the releases of all builds from the backup server deployed on Raspberry PI. It flashes the latest software daily to the set-top boxes connected via serial interface. Created RESTful API powering a web interface which allows specific versions of software to be downloaded and flashed to selected set-top boxes connected.}
+        \item{This system was proven fairly useful and deployed to test bays of two Sky Deutschland teams helping hassle free testing. It was also chosen to power up a 8 set-top box rack for automatic testing.}
+        \item{Techniques: Python, Flask, unittest, Behave, Fabric, Javascript, jQuery, BootStrap, REST, Debian}
+      \end{cvitems}
+    }
+  \cventryX
+    {Static analysis tool for action script and C binding layer}
+    {2015}
+    {There was no testing for the binding layer between ActionScript API and C implementations in SKY Deutschland project.}
+    {
+      \begin{cvitems}
+        \item {Added a testing framework applying static analysis checks against predefined rules, which secures the mapping of API declarations and implementations, function signatures verification, and naming convention consistency.}
+        \item{During and after this framework was integrated into the code base and continuously run on CI, multiple defects were exposed and got fixed in time, and none were found in this area in official releases afterwards.}
+        \item{Python, Regular Expression, JSON}
+      \end{cvitems}
+    }
+  \cventryX
+    {Agility measurement algorithm for agile team}
+    {2015}
+    {There was no approaches, however, to measure how fast or small and whether anything was improved along time.}
+    {
+      \begin{cvitems}
+        \item {Derived a prototype to an algorithm to measure the agility of individuals or teams in a given period. The formula introduced a figure of merit combining the time intervals and the size of code commits.}
+      \end{cvitems}
+    }
+\end{cventries}
+
