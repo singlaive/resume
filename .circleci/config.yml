@@ -19,7 +19,7 @@ references:
       name: load code from workspace
       command: |
         # Move all files and dotfiles to current directory
-        mv /tmp/workspace/frontend/* /tmp/workspace/frontend/.[!.]* .
+        mv /tmp/workspace/frontend/* /tmp/workspace/frontend/.[!.]* . 
       
   jars_cache_key: &jars_cache_key
     key: v7-dependency-jars-{{ checksum "project.clj" }}
