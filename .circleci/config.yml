@@ -5,10 +5,10 @@ references:
   container_config: &container_config
     docker:
       - image: harshjv/texlive-2015
-    working_directory: /root/frontend
+    working_directory: /root/build
 
   workspace_root: &workspace_root
-    /tmp/workspace
+    /tmp/build
     
   attach_workspace: &attach_workspace
     attach_workspace:
@@ -19,30 +19,19 @@ references:
       name: load code from workspace
       command: |
         # Move all files and dotfiles to current directory
-        mv /tmp/workspace/frontend/* /tmp/workspace/frontend/.[!.]* .
+        mv /tmp/workspace/build/* /tmp/workspace/build/.[!.]* .
+        echo "Murphy"
+        ls
       
-  jars_cache_key: &jars_cache_key
-    key: v7-dependency-jars-{{ checksum "project.clj" }}
+  # restore_node_modules: &restore_node_modules
+  #   run:
+  #     name: Restore npm dependencies from workspace
+  #     command: mv /tmp/workspace/node_modules ./
 
-  js_cache_key: &js_cache_key
-    key: v6-dependency-npm-{{ checksum "package.json"}}-{{ checksum "bower.json" }}
-    
-  restore_jars: &restore_jars
-    run:
-      name: Restore m2 repo from workspace
-      command: |
-        [[ -d ~/.m2 ]] && rm -r ~/.m2
-        mv /tmp/workspace/.m2 ~/
-
-  restore_node_modules: &restore_node_modules
-    run:
-      name: Restore npm dependencies from workspace
-      command: mv /tmp/workspace/node_modules ./
-
-  restore_bower_components: &restore_bower_components
-    run:
-      name: Restore bower dependencies from workspace
-      command: mv /tmp/workspace/bower_components resources/components
+  # restore_bower_components: &restore_bower_components
+  #   run:
+  #     name: Restore bower dependencies from workspace
+  #     command: mv /tmp/workspace/bower_components resources/components
       
 jobs:
             
@@ -52,12 +41,12 @@ jobs:
       - checkout
       - run:
           command: |
-            mkdir -p /tmp/workspace/frontend
-            mv * .[!.]* /tmp/workspace/frontend/
+            mkdir -p /tmp/workspace/build
+            mv * .[!.]* /tmp/workspace/build/
       - persist_to_workspace:
           root: *workspace_root
           paths:
-            - frontend
+            - build
 
   # clojure_dependencies:
   #   <<: *container_config
