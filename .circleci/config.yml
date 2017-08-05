@@ -8,7 +8,7 @@ references:
     working_directory: /root/build
 
   workspace_root: &workspace_root
-    /tmp/build
+    /tmp/workspace
     
   attach_workspace: &attach_workspace
     attach_workspace:
