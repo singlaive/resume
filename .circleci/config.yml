@@ -32,7 +32,12 @@ references:
   #   run:
   #     name: Restore bower dependencies from workspace
   #     command: mv /tmp/workspace/bower_components resources/components
-      
+
+general:
+  branches:
+    only:
+      - master
+
 jobs:
             
   checkout_code:
