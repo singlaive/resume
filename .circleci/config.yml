@@ -4,7 +4,7 @@ references:
   
   container_config: &container_config
     docker:
-      - image: harshjv/texlive-2015
+      - image: thomasweise/texlive
     working_directory: /root/build
 
   workspace_root: &workspace_root
@@ -50,6 +50,9 @@ jobs:
             ls
             mkdir -p /tmp/workspace/build
             mv * .[!.]* /tmp/workspace/build/
+            cd /tmp/workspace/build/
+            xelatex resume.tex
+            ls -l resume.pdf
       - persist_to_workspace:
           root: *workspace_root
           paths:
