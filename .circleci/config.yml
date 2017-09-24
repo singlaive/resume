@@ -54,12 +54,15 @@ jobs:
             xelatex resume.tex
             ls -l resume.pdf
             echo $CIRCLE_BUILD_NUM
-            mv resume.pdf $CIRCLE_ARTIFACTS/
+            mv resume.pdf /tmp/artifacts
 
       - persist_to_workspace:
           root: *workspace_root
           paths:
             - build
+
+      - store_artifacts:
+          path: /tmp/artifacts
 
   # clojure_dependencies:
   #   <<: *container_config
