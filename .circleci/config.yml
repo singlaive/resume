@@ -53,8 +53,8 @@ jobs:
             cd /tmp/workspace/build/
             xelatex resume.tex
             ls -l resume.pdf
-            git status
-            git add resume.pdf
+            echo $CIRCLE_BUILD_NUM
+            mv resume.pdf $CIRCLE_ARTIFACTS/
 
       - persist_to_workspace:
           root: *workspace_root
