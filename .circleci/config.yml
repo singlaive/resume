@@ -53,6 +53,7 @@ jobs:
             cd /tmp/workspace/build/
             xelatex resume.tex
             ls -l resume.pdf
+            mkdir /tmp/artifacts
             mv resume.pdf /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf
 
       - persist_to_workspace:
