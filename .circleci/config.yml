@@ -64,6 +64,11 @@ jobs:
       - store_artifacts:
           path: /tmp/artifacts
 
+      - deploy:
+         name: Deploy Master to Dropbox
+         command: |
+            ./dropbox_uploader.sh -f .dropbox_uploader upload resume.pdf resume.pdf
+
   # clojure_dependencies:
   #   <<: *container_config
   #   steps:
