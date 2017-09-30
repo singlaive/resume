@@ -65,9 +65,10 @@ jobs:
           path: /tmp/artifacts
 
       - deploy:
-         name: Deploy Master to Dropbox
-         command: |
-            ./dropbox_uploader.sh -f .dropbox_uploader upload resume.pdf resume.pdf
+          name: Deploy Master to Dropbox
+          command: |
+            cd /tmp/workspace/build/
+            ./dropbox_uploader.sh -f .dropbox_uploader upload /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf resume.pdf
 
   # clojure_dependencies:
   #   <<: *container_config
