@@ -60,7 +60,7 @@ jobs:
   deploy:
     <<: *container_config
     steps:
-      - attach_workspace
+      - attach_workspace:
         at: output
       - *load_code
       - run:
