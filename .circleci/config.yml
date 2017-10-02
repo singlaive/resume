@@ -39,7 +39,7 @@ jobs:
             cd /tmp/workspace/build/
             xelatex resume.tex
             mkdir /tmp/artifacts
-            mv resume.pdf /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf
+            cp resume.pdf /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf
 
       - persist_to_workspace:
           root: *workspace_root
@@ -63,8 +63,8 @@ jobs:
       - run:
           name: Deploy Master to Dropbox
           command: |
-            ls /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf
-            ./dropbox_uploader.sh -f .dropbox_uploader upload /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf resume.pdf
+            ls /tmp/workspace/build
+            ./dropbox_uploader.sh -f .dropbox_uploader upload /tmp/workspace/build/resume.pdf resume.pdf
 
 workflows:
   version: 2
