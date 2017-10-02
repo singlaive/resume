@@ -34,17 +34,19 @@ jobs:
       - run:
           name: build
           command: |
-            mkdir -p /tmp/workspace/build
-            mv * .[!.]* /tmp/workspace/build/
-            cd /tmp/workspace/build/
+            # mkdir -p /tmp/workspace/build
+            # mv * .[!.]* /tmp/workspace/build/
+            # cd /tmp/workspace/build/
             xelatex resume.tex
+            mkdir output
+            cp resume.pdf output/
             mkdir /tmp/artifacts
             cp resume.pdf /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf
 
       - persist_to_workspace:
-          root: *workspace_root
+          root: output
           paths:
-            - build
+            - resume.pdf
 
       - store_artifacts:
           path: /tmp/artifacts
@@ -58,13 +60,15 @@ jobs:
   deploy:
     <<: *container_config
     steps:
-      - *attach_workspace
+      - attach_workspace
+        at: output
       - *load_code
       - run:
           name: Deploy Master to Dropbox
           command: |
-            ls /tmp/workspace/build
-            ./dropbox_uploader.sh -f .dropbox_uploader upload /tmp/workspace/build/resume.pdf resume.pdf
+            ls 
+            ls output
+            ./dropbox_uploader.sh -f .dropbox_uploader upload output/resume.pdf resume.pdf
 
 workflows:
   version: 2
