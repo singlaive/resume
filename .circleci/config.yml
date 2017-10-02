@@ -63,9 +63,7 @@ jobs:
       - run:
           name: Deploy Master to Dropbox
           command: |
-            pwd
-            ls
-            cd /tmp/workspace/build/
+            ls /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf
             ./dropbox_uploader.sh -f .dropbox_uploader upload /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf resume.pdf
 
 workflows:
