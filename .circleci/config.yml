@@ -61,7 +61,7 @@ jobs:
     <<: *container_config
     steps:
       - attach_workspace:
-          sat: output
+          at: output
       - *load_code
       - run:
           name: Deploy Master to Dropbox
