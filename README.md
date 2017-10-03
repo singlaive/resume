@@ -4,6 +4,6 @@
 </div>
 
 This is where my CV is built and deployed.
-This is my [LinkedIn](www.linkedin.com/in/murphymeng).
+My [LinkedIn](www.linkedin.com/in/murphymeng).
 
 The latex template is powered by [Awsome CV](https://github.com/posquit0/Awesome-CV).
