@@ -6,28 +6,14 @@ references:
     docker:
       - image: singlaive/texlive_curl:0.1
     working_directory: /root/build
-
-  workspace_root: &workspace_root
-    /tmp/workspace
     
-  attach_workspace: &attach_workspace
-    attach_workspace:
-      at: *workspace_root
-      
-  load_code: &load_code
-    run:
-      name: Load code from workspace
-      command: |
-        # Move all files and dotfiles to current directory
-        mv /tmp/workspace/build/* /tmp/workspace/build/.[!.]* .
-
 general:
   branches:
     only:
       - master
 
 jobs:
-  checkout_code:
+  build_deploy:
     <<: *container_config
     steps:
       - checkout
@@ -51,32 +37,15 @@ jobs:
       - store_artifacts:
           path: /tmp/artifacts
 
-      # - deploy:
-      #     name: Deploy Master to Dropbox
-      #     command: |
-      #      cd /tmp/workspace/build/
-      #       ./dropbox_uploader.sh -f .dropbox_uploader upload /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf resume.pdf
-            
-  deploy:
-    <<: *container_config
-    steps:
-      - attach_workspace:
-          at: output
-      - *load_code
-      - run:
+      - deploy:
           name: Deploy Master to Dropbox
           command: |
-            ls 
-            ls output
-            ./dropbox_uploader.sh -f .dropbox_uploader upload output/resume.pdf resume.pdf
+           cd /tmp/workspace/build/
+            ./dropbox_uploader.sh -f .dropbox_uploader upload /tmp/artifacts/resume_$CIRCLE_BUILD_NUM.pdf resume.pdfs       
 
 workflows:
   version: 2
 
-  build_test_deploy:
+  default_workflow:
     jobs:
-      - checkout_code
-      - deploy:
-          requires:
-            - checkout_code
-
+      - build_deploy
