@@ -1,8 +1,9 @@
-
-
 <div align="center">
-  <a href="https://circleci.com/gh/singlaive/resume">
-    <img alt="CircleCI" src="https://circleci.com/gh/singlaive/resume.svg?style=shield" />
-  </a>
+  <img src="https://circleci.com/gh/singlaive/resume.svg?style=shield" />
+  <img src="https://img.shields.io/github/last-commit/singlaive/resume.svg" />
 </div>
-[![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)]()
+
+This is where my CV is built and deployed.
+This is my [LinkedIn](www.linkedin.com/in/murphymeng).
+
+The latex template is powered by [Awsome CV](https://github.com/posquit0/Awesome-CV).
